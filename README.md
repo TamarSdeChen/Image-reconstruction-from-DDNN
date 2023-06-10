@@ -21,25 +21,41 @@ This repository contains the implementation of:
 ![project_diagram.png](project_diagram.png)
 
 
-## Setup
-### Requirements
+
+## Prerequisites
+| Library       | Version |
+|---------------|----|
+| `Python`      |  |
+| `torch`       | |
+| `torchvision` |  |
+| `numpy`       |  |
+| `matplotlib`  | |
+| `pandas `      ||
 
 
-Install required packages:
+## Files in the repository
+
+| File name                                                     | Purpsoe                                                                                                                                                                                             |
+|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `optic_network.py`                                            | Optical Model implementation. Based on the artical [To image, or not to image: Class-specific diffractive cameras with all-optical erasure of undesired objects](https://arxiv.org/abs/2205.13122)] |
+| `train.py  `                                                  | Code for training the Optical Model                                                                                                                                                                 |
+| `test.py`                                                     | Code for test the trained Optical Model and get all-optical erasure MNIST digit                                                                                                                     |
+| `inverse_reconstruction.py`                                   | This code applies the inverse impulse response to the optically erased images                                                                                                                       |
+| `best_match.py`                                               | Algorithm to classify the detracted images                                                                                                                                                          |
+| `UNET.py`                                                     | U-Net architecture for Image-To-Image Translation task                                                                                                                                              |
+| `pipe_optic_unet.py`                                          | Code for training the U-Net on the all-optical erasure MNIST digits (Optical Network output), the groung truth are the original MNIST digit (before all-optical erasure)                            |
+| `test_small_UNET`                                             | Code for test the trained U-Net that reconstruct the all-optical erasure MNIST digits                                                                                                               |
+                                                                                                                                                    
 
 
-## Usage
-
-
-
-### Data
+## Data
 we used MNIST dataset from torchvision Dataset class for training the Optical Model
 
-### Models
+## Models
 * For implement the Optical Model, we used this article [To image, or not to image: Class-specific diffractive cameras with all-optical erasure of undesired objects](https://arxiv.org/abs/2205.13122).
 * For implement the U-net we used exists [code](https://github.com/nikhilroxtomar/Semantic-Segmentation-Architecture/blob/main/PyTorch/unet.py) and change it for Image-To-Image task.
 
 
-
+## Thanks
 Big thanks to our supervisor Matan Kleiner who gave us the opportunity to undertake the project and supported us all along the way.
 
