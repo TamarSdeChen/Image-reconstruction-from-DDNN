@@ -18,7 +18,7 @@ This repository contains the implementation of:
 * Algorithm for Classification of MNIST labels from all-optical erasure of undesired objects classes.
 * U-net architecture for Image-To-Image Translation task, that reconstruct the all-optical erasure digits to the original MNIST digits
 
-![project_diagram.png](project_diagram.png.png)
+![project_diagram.png](project_diagram.png)
 
 
 ## Setup
