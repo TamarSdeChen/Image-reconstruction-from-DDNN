@@ -26,14 +26,10 @@ This repository contains the implementation of:
 
 
 Install required packages:
-```
-conda install pytorch==1.7.1 torchvision==0.8.2 torchaudio==0.7.2 cudatoolkit=10.1 -c pytorch
-pip install -r requirements.txt
-```
+
 
 ## Usage
-To train or test the model it is required to have a directory for your experiment under the experiments dir containing config.json file.
-You can see an example in 3DeepCT\experiments\example.
+
 
 
 ### Data
