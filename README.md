@@ -15,25 +15,39 @@ This architecture consists of an encoder-decoder structure with skip connections
 We trained the network for image-to-image translation task.
 The goal was to reconstruct the original images from the all optically erased noise like images, and we got seemingly good results.
 
+
 ## Description
 This repository contains the implementation of:
 * Recreation of a camera design that performs class-specific all-optical imaging
 * Algorithm for Classification of MNIST labels from all-optical erasure of undesired objects classes.
 * U-net architecture for Image-To-Image Translation task, that reconstructs the all-optically erased digits to the original MNIST digits
 
-![project_diagram.png](project_diagram.png)
+![project_diagram.png](Images/project_diagram.png)
+
+## Results
+![reconstruction results from UNET.png](Images/reconstruction results from UNET.png)
+
+![optic_model.png](Images/optic_model.png)
 
 
 
-## Prerequisites
-| Library       | Version |
-|---------------|----|
-| `Python`      |  |
-| `torch`       | |
-| `torchvision` |  |
-| `numpy`       |  |
-| `matplotlib`  | |
-| `pandas `      ||
+[//]: # (## Prerequisites)
+
+[//]: # (| Library       | Version |)
+
+[//]: # (|---------------|----|)
+
+[//]: # (| `Python`      |  |)
+
+[//]: # (| `torch`       | |)
+
+[//]: # (| `torchvision` |  |)
+
+[//]: # (| `numpy`       |  |)
+
+[//]: # (| `matplotlib`  | |)
+
+[//]: # (| `pandas `      ||)
 
 
 ## Files in the repository
@@ -59,6 +73,6 @@ we used MNIST dataset from torchvision Dataset class for training the Optical Mo
 * The implementation of the U-net was based on an existing code from: [code](https://github.com/nikhilroxtomar/Semantic-Segmentation-Architecture/blob/main/PyTorch/unet.py) and changed it for Image-To-Image task.
 
 
-## Thanks
+## Acknowledgments
 Big thanks to our supervisor Matan Kleiner who gave us the opportunity to undertake the project and supported us all along the way.
 
