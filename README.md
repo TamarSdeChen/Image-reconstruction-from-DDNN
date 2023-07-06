@@ -26,7 +26,7 @@ This repository contains the implementation of:
 
 ## Results
 
-![reconstruction results from UNET.png](Images/reconstruction results from UNET.png)
+![reconstruction.png](Images/reconstruction.png)
 
 ![optic_model.png](Images/optic_model.png)
 
