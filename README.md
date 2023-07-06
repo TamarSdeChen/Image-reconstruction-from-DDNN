@@ -25,6 +25,7 @@ This repository contains the implementation of:
 ![project_diagram.png](Images/project_diagram.png)
 
 ## Results
+
 ![reconstruction results from UNET.png](Images/reconstruction results from UNET.png)
 
 ![optic_model.png](Images/optic_model.png)
@@ -66,7 +67,7 @@ This repository contains the implementation of:
 
 
 ## Data
-we used MNIST dataset from torchvision Dataset class for training the Optical Model
+We used MNIST dataset from torchvision Dataset class for training the Optical Model
 
 ## Models
 * The implementation of the Optical Model was based on this article [To image, or not to image: Class-specific diffractive cameras with all-optical erasure of undesired objects](https://arxiv.org/abs/2205.13122).
