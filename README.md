@@ -3,33 +3,26 @@ Tamar Sde Chen and Iggy Segev Gal, Technion, 2023
 Supervised by Matan Kleiner
 
 ## Abstract
-In this project we will present research in the field of deep learning and image reconstruction.
-The goal of the project was to understand whether it is possible to recover an image from a noise image passed through a deep optical network.
-First we reproduced an Optical Network based on the article [To image, or not to image: Class-specific diffractive cameras with all-optical erasure of undesired objects](https://arxiv.org/abs/2205.13122) that demonstrates the use of a deep optical network as a classifying camera which transfers the image of the target class in high quality and for the other classes transfers a noise image.
-In the second step, we recovered the original images from the noise images.
-At the stage of reproducing the article, we built a model from free space propagation layers and phase mask layers, from which the model is composed in the article.
-Next, we trained the network on the "MNIST" dataset and got similar results to the results of the article in the simulation of the optical network.
-In the reconstruction phase, we wrote an algorithm which classifies the noise images into the original classes and we reached an average accuracy of 91.77% on 900 samples.
-These results were a proof of feasibility that there is indeed information in the noise images. Last, we used a DNN with U-Net architecture.
-This architecture consists of an encoder-decoder structure with skip connections.
-We trained the network for image-to-image translation task.
-The goal was to reconstruct the original images from the all optically erased noise like images, and we got seemingly good results.
-
-
-## Description
-This repository contains the implementation of:
-* Recreation of a camera design that performs class-specific all-optical imaging
-* Algorithm for Classification of MNIST labels from all-optical erasure of undesired objects classes.
-* U-net architecture for Image-To-Image Translation task, that reconstructs the all-optically erased digits to the original MNIST digits
+Deep diffractive neural networks [1] have emerged as a promising framework that combines the speed and energy efficiency of optical computing with the power of deep learning. This has opened up new possibilities for optical computing suit for machine learning tasks and all-optical sensors. One proposed application of this framework is the design of a diffractive camera that preserves privacy by only imaging target classes while optically erasing all other unwanted classes [2]. In this project, we investigated whether this camera design truly erases the information in unwanted class data. After reproducing the results described in [2] we used K-NN to achieve up to 94% accuracy in classifying optically erased images. We then used a U-Net [3] to reconstruct the original images from their optically erased counterparts. Our findings revealed that the proposed optical diffractive camera failed to erase important information, suggesting that a different approach may be needed to achieve a truly privacy-preserving diffractive camera.
 
 ![project_diagram.png](Images/project_diagram.png)
 
 ## Results
 
-![reconstruction.png](Images/reconstruction.png)
-
 ![optic_model.png](Images/optic_model.png)
 
+The diffraction camera architecture. 
+
+![reconstruction.png](Images/reconstruction.png)
+
+Reconstruction of optically erased images using U-Net architecture. From top to bottom, the original MNIST images which are input to the optical network, results of a forward pass through the optical network where all of the different images are optically erased, reconstruction results of optically erased images. 
+
+
+## Description
+This repository contains:
+* Implementation of a camera design that performs class-specific all-optical imaging, as described in [2].
+* Algorithm for classification of all-optical erased MNIST digits.
+* U-net architecture [3] that reconstructs all-optically erased digits to the original MNIST digits.
 
 
 [//]: # (## Prerequisites)
@@ -51,29 +44,28 @@ This repository contains the implementation of:
 [//]: # (| `pandas `      ||)
 
 
-## Files in the repository
+## Repository Structure
+```
+├── Images - images used in this repository readme.md file   
+├── Optic Network - Implementation of optical network described in [2]
+├── UNET - U-Net architecture [3] for Image-to-Image translation
+└── classification_algorithm - Classification algorithm for erased MNIST digits 
+```
 
-| File name                                                     | Purpsoe                                                                                                                                                                                             |
-|---------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `optic_network.py`                                            | Optical Model implementation. Based on the artical [To image, or not to image: Class-specific diffractive cameras with all-optical erasure of undesired objects](https://arxiv.org/abs/2205.13122)] |
-| `train.py  `                                                  | Code for training the Optical Model                                                                                                                                                                 |
-| `test.py`                                                     | Code for testing the trained Optical Model                                                                                                                      |
-| `inverse_reconstruction.py`                                   | This code applies the inverse impulse response to the optically erased images                                                                                                                       |
-| `best_match.py`                                               | Algorithm to classify the detracted images                                                                                                                                                          |
-| `UNET.py`                                                     | U-Net architecture for Image-To-Image Translation task                                                                                                                                              |
-| `pipe_optic_unet.py`                                          | Code for training the U-Net on the all-optical erased MNIST digits (Optical Network output), the groung truth are the original MNIST digit (before all-optical erasure)                            |
-| `test_small_UNET`                                             | Code for testing the trained U-Net that reconstructs the all-optical erased MNIST digits                                                                                                               |
-                                                                                                                                                    
+## References
+
+[1] Lin, X., Rivenson, Y., Yardimci, N.T., Veli, M., Luo, Y., Jarrahi, M. and Ozcan, A., 2018. [All-optical machine learning using diffractive deep neural networks.](https://www.science.org/doi/full/10.1126/science.aat8084) Science, 361(6406), pp.1004-1008.
 
 
-## Data
-We used MNIST dataset from torchvision Dataset class for training the Optical Model
+[2] Bai, B., Luo, Y., Gan, T., Hu, J., Li, Y., Zhao, Y., Mengu, D., Jarrahi, M. and Ozcan, A., 2022. [To image, or not to image: class-specific diffractive cameras with all-optical erasure of undesired objects.](https://elight.springeropen.com/articles/10.1186/s43593-022-00021-3?via=indexdotco) eLight, 2(1), pp.1-20.
 
-## Models
-* The implementation of the Optical Model was based on this article [To image, or not to image: Class-specific diffractive cameras with all-optical erasure of undesired objects](https://arxiv.org/abs/2205.13122).
-* The implementation of the U-net was based on an existing code from: [code](https://github.com/nikhilroxtomar/Semantic-Segmentation-Architecture/blob/main/PyTorch/unet.py) and changed it for Image-To-Image task.
+
+[3] Ronneberger, O., Fischer, P. and Brox, T., 2015. [U-net: Convolutional networks for biomedical image segmentation.](https://link.springer.com/chapter/10.1007/978-3-319-24574-4_28) In Medical Image Computing and Computer-Assisted Intervention–MICCAI 2015: 18th International Conference, Munich, Germany, October 5-9, 2015, Proceedings, Part III 18 (pp. 234-241). Springer International Publishing.
+
+## Sources
+* The data used in this project is the [MNIST digits dataset](https://yann.lecun.com/exdb/mnist/). 
+* The implementation of the U-net was based on an [existing code](https://github.com/nikhilroxtomar/Semantic-Segmentation-Architecture/blob/main/PyTorch/unet.py) which we changed for Image-to-Image translation task.
 
 
 ## Acknowledgments
 Big thanks to our supervisor Matan Kleiner who gave us the opportunity to undertake the project and supported us all along the way.
-
